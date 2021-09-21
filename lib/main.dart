@@ -24,7 +24,7 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    var questions = [
+    const questions = [
       {
         'questionText': 'What\'s your favorite color?',
         'answers': ['Black', 'Blue', 'Red', 'Green'],
@@ -35,12 +35,7 @@ class _MyAppState extends State<MyApp> {
       },
       {
         'questionText': 'Who\'s your favorite instructor?',
-        'answers': [
-          'Maximilian Schwarzmüller',
-          'Colt Steele',
-          'Tim Buchalka',
-          'Jonas Schmedtmann'
-        ],
+        'answers': ['Maximilian Schwarzmüller', 'Colt Steele', 'Tim Buchalka'],
       }
     ];
 
@@ -52,11 +47,12 @@ class _MyAppState extends State<MyApp> {
         body: Column(
           children: [
             Question(
-              questions[_questionIndex],
+              questions[_questionIndex]['questionText'],
             ),
-            Answer('Answer 1', _answerQuestion),
-            Answer('Answer 2', _answerQuestion),
-            Answer('Answer 3', _answerQuestion),
+            ...(questions[_questionIndex]['answers'] as List<String>)
+                .map((answer) {
+              return Answer(answer, _answerQuestion);
+            }).toList()
           ],
         ),
       ),
