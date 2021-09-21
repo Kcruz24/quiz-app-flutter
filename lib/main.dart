@@ -20,7 +20,7 @@ class _MyAppState extends State<MyApp> {
         {'text': 'Black', 'score': 8},
         {'text': 'Blue', 'score': 10},
         {'text': 'Red', 'score': 7},
-        {'text': 'Green', 'score': 7.5}
+        {'text': 'Green', 'score': 7}
       ],
     },
     {
@@ -35,9 +35,9 @@ class _MyAppState extends State<MyApp> {
     {
       'questionText': 'Who\'s your favorite instructor?',
       'answers': [
-        {'text': 'Maximilian Schwarzmüller', 'score': 7.9},
+        {'text': 'Maximilian Schwarzmüller', 'score': 7},
         {'text': 'Colt Steele', 'score': 9},
-        {'text': 'Tim Buchalka', 'score': 8.7}
+        {'text': 'Tim Buchalka', 'score': 8}
       ],
     }
   ];
@@ -63,7 +63,7 @@ class _MyAppState extends State<MyApp> {
         ),
         body: _questionIndex < _questions.length
             ? Quiz(_answerQuestion, _questions, _questionIndex)
-            : Result(),
+            : Result(_totalScore),
       ),
     );
   }
